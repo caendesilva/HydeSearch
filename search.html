@@ -29,5 +29,18 @@
             <input type="search" name="search" id="search-input">
         </form>
     </div>
+
+    <script src="dist/HydeSearch.js"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            console.log('Debug: Initializing HydeSearch');
+            const searchIndexLocation = 'https://cdn.desilva.se/temp/7d38cb8c-1293-4ed9-ad97-a29a106b3248%20/search.json';
+            const Search = new HydeSearch(searchIndexLocation);
+
+            console.log('Debug: HydeSearch initialized');
+            console.log(Search);
+        });
+    </script>
 </body>
 </html>
