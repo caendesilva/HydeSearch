@@ -75,8 +75,8 @@ class HydeSearch {
         this.setSearchStatusMessage("Found " + searchResults.length + " result" + (searchResults.length > 1 ? "s" : "") + ".");
         // Add each result to the list
         searchResults.forEach((result) => {
-            const resultItem = this.createResultItem(result);
-            this.searchResultsList.appendChild(resultItem);
+            this.searchResultsList.appendChild(this.createResultItemTitle(result));
+            this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
     }
     displayEnterSearchQuery() {
@@ -105,7 +105,7 @@ class HydeSearch {
         const searchStatusMessage = this.searchResultsContainer.querySelector("p#search-status");
         searchStatusMessage.innerText = message;
     }
-    createResultItem(result) {
+    createResultItemTitle(result) {
         const resultItem = document.createElement("dt");
         resultItem.classList.add("hyde-search-result");
         const resultLink = document.createElement("a");
@@ -118,6 +118,9 @@ class HydeSearch {
         searchTermCountSpan.classList.add("search-term-count");
         searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
         resultItem.appendChild(searchTermCountSpan);
+        return resultItem;
+    }
+    createResultItemContext(result) {
         const resultContent = document.createElement("dd");
         resultContent.classList.add("hyde-search-context");
         // Experimental highlighting
@@ -133,7 +136,6 @@ class HydeSearch {
         const sanitizedContentString = sentence.replace(/<[^>]*>/g, "").trim();
         // Highlight the search term
         resultContent.innerHTML = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
-        resultItem.appendChild(resultContent);
-        return resultItem;
+        return resultContent;
     }
 }

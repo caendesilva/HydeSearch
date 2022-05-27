@@ -90,8 +90,8 @@ class HydeSearch {
         
         // Add each result to the list
         searchResults.forEach((result) => {
-            const resultItem = this.createResultItem(result);
-            this.searchResultsList.appendChild(resultItem);
+            this.searchResultsList.appendChild(this.createResultItemTitle(result));
+            this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
     }
 
@@ -128,7 +128,7 @@ class HydeSearch {
         searchStatusMessage.innerText = message;
     }
 
-    protected createResultItem(result: object): HTMLLIElement {
+    protected createResultItemTitle(result: object): HTMLLIElement {
         const resultItem = document.createElement("dt") as HTMLLIElement;
         resultItem.classList.add("hyde-search-result");
 
@@ -143,6 +143,12 @@ class HydeSearch {
         searchTermCountSpan.classList.add("search-term-count");
         searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
         resultItem.appendChild(searchTermCountSpan);
+
+        return resultItem;
+    }
+
+
+    protected createResultItemContext(result: object): HTMLParagraphElement {
 
         const resultContent = document.createElement("dd") as HTMLParagraphElement;
         resultContent.classList.add("hyde-search-context");
@@ -166,8 +172,7 @@ class HydeSearch {
 
         // Highlight the search term
         resultContent.innerHTML = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
-        resultItem.appendChild(resultContent);
 
-        return resultItem;
+        return resultContent;
     }
 }
