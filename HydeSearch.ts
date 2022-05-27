@@ -162,7 +162,7 @@ class HydeSearch {
         const sentence = result["content"].substring(sentenceStartPosition + 1, sentenceEndPosition + 1);
 
         // Sanitize the content string to remove HTML tags (Not indented to be secure as it assumes the JSON is trusted, but instead tries to remove embeds and images.)
-        const sanitizedContentString = sentence.replace(/<[^>]*>/g, "");
+        const sanitizedContentString = sentence.replace(/<[^>]*>/g, "").trim();
 
         // Highlight the search term
         resultContent.innerHTML = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
