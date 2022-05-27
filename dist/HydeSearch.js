@@ -111,7 +111,7 @@ class HydeSearch {
         // Count the number of search term occurrences in the content
         // Get the position of the first occurrence of the search term
         const searchTermPosition = result["content"].indexOf(this.searchInput.value);
-        const contentString = "..." + result["content"].substring(searchTermPosition - 24, searchTermPosition + 32) + "...";
+        const contentString = "..." + result["content"].substring(searchTermPosition - 32, searchTermPosition + 48) + "...";
         // Sanitize the content string to remove HTML tags
         const sanitizedContentString = contentString.replace(/<[^>]*>/g, "");
         // Highlight the search term
