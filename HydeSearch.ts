@@ -1,6 +1,6 @@
 class HydeSearch {
     searchIndexLocation: string;
-    searchIndex: object;
+    searchIndex: Array<any>;
 
     searchInput = document.getElementById("search-input") as HTMLInputElement;
 
