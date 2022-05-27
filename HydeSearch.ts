@@ -140,6 +140,7 @@ class HydeSearch {
 
         // Add search term count to result item
         const searchTermCount = (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+        resultItem.setAttribute('data-matches', searchTermCount.toString());
         const searchTermCountSpan = document.createElement("span");
         searchTermCountSpan.classList.add("search-term-count");
         searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
