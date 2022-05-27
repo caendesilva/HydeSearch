@@ -33,6 +33,10 @@ Then, load and initialize the plugin:
 </script>
 ```
 
+## Contributing
+
+PRs, issues, and feedback are welcome! I'd especially love to get help writing tests!
+
 ## License
 
 The MIT License
