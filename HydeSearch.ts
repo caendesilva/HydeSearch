@@ -40,10 +40,25 @@ class HydeSearch {
     public search() {
         console.log("HS/Debug: Searching... Got input: " + this.searchInput.value);
         const searchTerm = this.searchInput.value;
-        const searchResults = this.searchIndex[searchTerm];
 
-        if (searchResults) {
-            console.log(searchResults);
+        // Find indexEntries where the search term is in the title or content
+        const searchResults = this.searchIndex.filter((indexEntry) => {
+            return indexEntry["title"].toLowerCase().includes(searchTerm.toLowerCase()) || indexEntry["content"].toLowerCase().includes(searchTerm.toLowerCase());
+        });
+
+        if (searchResults.length > 0) {
+            this.displayResults(searchResults);
         }
+        else {
+            this.displayNoResults();
+        }
+    }
+
+    protected displayResults(searchResults: any[]) {
+        console.log("HS/Debug: Found "+ searchResults.length +" search results.");
+    }
+
+    protected displayNoResults() {
+        console.log("HS/Debug: No results.");
     }
 }
