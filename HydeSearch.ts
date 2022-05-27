@@ -87,7 +87,14 @@ class HydeSearch {
         this.debug("Found "+ searchResults.length +" search results.");
 
         this.setSearchStatusMessage("Found " + searchResults.length + " result"+ (searchResults.length > 1 ? "s" : "") +".");
-        
+
+        // Sort results by number of matches
+        searchResults.sort((a, b) => {
+            return (b["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length
+                - (a["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+        });
+
+
         // Add each result to the list
         searchResults.forEach((result) => {
             this.searchResultsList.appendChild(this.createResultItemTitle(result));

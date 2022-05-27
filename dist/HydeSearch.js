@@ -73,6 +73,11 @@ class HydeSearch {
     displayResults(searchResults) {
         this.debug("Found " + searchResults.length + " search results.");
         this.setSearchStatusMessage("Found " + searchResults.length + " result" + (searchResults.length > 1 ? "s" : "") + ".");
+        // Sort results by number of matches
+        searchResults.sort((a, b) => {
+            return (b["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length
+                - (a["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+        });
         // Add each result to the list
         searchResults.forEach((result) => {
             this.searchResultsList.appendChild(this.createResultItemTitle(result));
@@ -115,6 +120,7 @@ class HydeSearch {
         resultItem.appendChild(resultLink);
         // Add search term count to result item
         const searchTermCount = (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+        resultItem.setAttribute('data-matches', searchTermCount.toString());
         const searchTermCountSpan = document.createElement("span");
         searchTermCountSpan.classList.add("search-term-count");
         searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
