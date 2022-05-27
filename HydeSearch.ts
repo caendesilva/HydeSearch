@@ -1,4 +1,6 @@
 class HydeSearch {
+    debugOutput: boolean = false;
+
     searchIndexLocation: string;
     searchIndex: Array<any>;
 
@@ -13,9 +15,11 @@ class HydeSearch {
     }
 
     public init(): void {
-        console.log("HS/Debug: Initializing...");
+        this.debug("Initializing...");
         this.loadIndex().then(() => {
-            console.log(this.searchIndex);
+            if (this.debugOutput) {
+                console.log(this.searchIndex);
+            }
         });
 
         this.searchInput.addEventListener("input", () => {
@@ -24,11 +28,22 @@ class HydeSearch {
 
         this.createSearchResultsContainer();
 
-        console.log("HS/Debug: Initialized.");
+        this.debug("Initialized.");
+    }
+
+    public withDebugOutput(): this {
+        this.debugOutput = true;
+        return this;
+    }
+
+    public debug(string: string) {
+        if (this.debugOutput) {
+            console.log('HS/Debug: '+ string);
+        }
     }
 
     public async loadIndex(): Promise<void> {
-        console.log("HS/Debug: Loading index...");
+        this.debug("Loading index...");
 
         const response = await fetch(this.searchIndexLocation, {
             method: "GET",
@@ -42,11 +57,11 @@ class HydeSearch {
         }
 
         this.searchIndex = await response.json();
-        console.log("HS/Debug: Index loaded.");
+        this.debug("Index loaded.");
     }
 
     public search() {
-        console.log("HS/Debug: Searching... Got input: " + this.searchInput.value);
+        this.debug("Searching... Got input: " + this.searchInput.value);
         const searchTerm = this.searchInput.value;
 
         // Clear the list
@@ -69,7 +84,7 @@ class HydeSearch {
     }
 
     protected displayResults(searchResults: any[]) {
-        console.log("HS/Debug: Found "+ searchResults.length +" search results.");
+        this.debug("Found "+ searchResults.length +" search results.");
 
         this.setSearchStatusMessage("Found " + searchResults.length + " result"+ (searchResults.length > 1 ? "s" : "") +".");
         
@@ -86,7 +101,7 @@ class HydeSearch {
     }
 
     protected displayNoResults() {
-        console.log("HS/Debug: No results.");
+        this.debug("No results.");
 
         this.setSearchStatusMessage("No results found.");
     }

@@ -9,24 +9,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 class HydeSearch {
     constructor(searchIndexLocation) {
+        this.debugOutput = false;
         this.searchInput = document.getElementById("search-input");
         this.hydeSearchContainer = document.getElementById('hyde-search');
         this.searchIndexLocation = searchIndexLocation;
     }
     init() {
-        console.log("HS/Debug: Initializing...");
+        this.debug("Initializing...");
         this.loadIndex().then(() => {
-            console.log(this.searchIndex);
+            if (this.debugOutput) {
+                console.log(this.searchIndex);
+            }
         });
         this.searchInput.addEventListener("input", () => {
             this.search();
         });
         this.createSearchResultsContainer();
-        console.log("HS/Debug: Initialized.");
+        this.debug("Initialized.");
+    }
+    withDebugOutput() {
+        this.debugOutput = true;
+        return this;
+    }
+    debug(string) {
+        if (this.debugOutput) {
+            console.log('HS/Debug: ' + string);
+        }
     }
     loadIndex() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("HS/Debug: Loading index...");
+            this.debug("Loading index...");
             const response = yield fetch(this.searchIndexLocation, {
                 method: "GET",
                 headers: {
@@ -37,11 +49,11 @@ class HydeSearch {
                 throw new Error(`Could not load search index from ${this.searchIndexLocation}`);
             }
             this.searchIndex = yield response.json();
-            console.log("HS/Debug: Index loaded.");
+            this.debug("Index loaded.");
         });
     }
     search() {
-        console.log("HS/Debug: Searching... Got input: " + this.searchInput.value);
+        this.debug("Searching... Got input: " + this.searchInput.value);
         const searchTerm = this.searchInput.value;
         // Clear the list
         this.searchResultsList.innerHTML = "";
@@ -59,7 +71,7 @@ class HydeSearch {
             : this.displayNoResults();
     }
     displayResults(searchResults) {
-        console.log("HS/Debug: Found " + searchResults.length + " search results.");
+        this.debug("Found " + searchResults.length + " search results.");
         this.setSearchStatusMessage("Found " + searchResults.length + " result" + (searchResults.length > 1 ? "s" : "") + ".");
         // Add each result to the list
         searchResults.forEach((result) => {
@@ -72,7 +84,7 @@ class HydeSearch {
         // this.setSearchStatusMessage("Please enter a search query.");
     }
     displayNoResults() {
-        console.log("HS/Debug: No results.");
+        this.debug("No results.");
         this.setSearchStatusMessage("No results found.");
     }
     createSearchResultsContainer() {

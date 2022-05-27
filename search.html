@@ -44,8 +44,7 @@
     <script>
         window.addEventListener('load', function() {
             const searchIndexLocation = 'tests/search.json';
-            const Search = new HydeSearch(searchIndexLocation);
-
+            const Search = new HydeSearch(searchIndexLocation).withDebugOutput();
             Search.init();
         });
     </script>
