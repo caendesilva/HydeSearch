@@ -153,10 +153,16 @@ class HydeSearch {
 
         // Get the position of the first occurrence of the search term
         const searchTermPosition = result["content"].indexOf(this.searchInput.value);
-        const contentString = "..." + result["content"].substring(searchTermPosition - 32, searchTermPosition + 48) + "...";
+
+        // Get the position of where the sentence containing the search term starts
+        const sentenceStartPosition = result["content"].lastIndexOf(".", searchTermPosition);
+        const sentenceEndPosition = result["content"].indexOf(".", searchTermPosition);
+
+        // Get the sentence containing the search term
+        const sentence = result["content"].substring(sentenceStartPosition + 1, sentenceEndPosition + 1);
 
         // Sanitize the content string to remove HTML tags (Not indented to be secure as it assumes the JSON is trusted, but instead tries to remove embeds and images.)
-        const sanitizedContentString = contentString.replace(/<[^>]*>/g, "");
+        const sanitizedContentString = sentence.replace(/<[^>]*>/g, "");
 
         // Highlight the search term
         resultContent.innerHTML = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
