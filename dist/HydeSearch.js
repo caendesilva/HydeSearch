@@ -108,6 +108,7 @@ class HydeSearch {
     createResultItemTitle(result) {
         const resultItem = document.createElement("dt");
         resultItem.classList.add("hyde-search-result");
+        resultItem.id = "search-result-" + result["slug"];
         const resultLink = document.createElement("a");
         resultLink.href = result["slug"] + ".html"; // Todo get link/preference from Hyde JSON
         resultLink.innerText = result["title"];
@@ -123,6 +124,7 @@ class HydeSearch {
     createResultItemContext(result) {
         const resultContent = document.createElement("dd");
         resultContent.classList.add("hyde-search-context");
+        resultContent.setAttribute('data-for', "search-result-" + result["slug"]);
         // Experimental highlighting
         // Count the number of search term occurrences in the content
         // Get the position of the first occurrence of the search term

@@ -131,6 +131,7 @@ class HydeSearch {
     protected createResultItemTitle(result: object): HTMLLIElement {
         const resultItem = document.createElement("dt") as HTMLLIElement;
         resultItem.classList.add("hyde-search-result");
+        resultItem.id = "search-result-" + result["slug"];
 
         const resultLink = document.createElement("a") as HTMLAnchorElement;
         resultLink.href = result["slug"] + ".html"; // Todo get link/preference from Hyde JSON
@@ -152,6 +153,7 @@ class HydeSearch {
 
         const resultContent = document.createElement("dd") as HTMLParagraphElement;
         resultContent.classList.add("hyde-search-context");
+        resultContent.setAttribute('data-for', "search-result-" + result["slug"]);
 
         // Experimental highlighting
 
