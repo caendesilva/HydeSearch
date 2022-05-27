@@ -67,6 +67,12 @@ class HydeSearch {
         console.log("HS/Debug: Found "+ searchResults.length +" search results.");
 
         this.setSearchStatusMessage("Found " + searchResults.length + " results.");
+        
+        // Add each result to the list
+        searchResults.forEach((result) => {
+            const resultItem = this.createResultItem(result);
+            this.searchResultsList.appendChild(resultItem);
+        });
     }
 
     protected displayNoResults() {
@@ -95,5 +101,17 @@ class HydeSearch {
 
         const searchStatusMessage = this.searchResultsContainer.querySelector("p#search-status") as HTMLParagraphElement;
         searchStatusMessage.innerText = message;
+    }
+
+    protected createResultItem(result: object): HTMLLIElement {
+        const resultItem = document.createElement("dt") as HTMLLIElement;
+        resultItem.classList.add("hyde-search-result");
+
+        const resultLink = document.createElement("a") as HTMLAnchorElement;
+        resultLink.href = result["slug"] + ".html"; // Todo get link/preference from Hyde JSON
+        resultLink.innerText = result["title"];
+        resultItem.appendChild(resultLink);
+
+        return resultItem;
     }
 }

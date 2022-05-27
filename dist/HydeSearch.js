@@ -43,6 +43,8 @@ class HydeSearch {
     search() {
         console.log("HS/Debug: Searching... Got input: " + this.searchInput.value);
         const searchTerm = this.searchInput.value;
+        // Clear the list
+        this.searchResultsList.innerHTML = "";
         // Find indexEntries where the search term is in the title or content
         const searchResults = this.searchIndex.filter((indexEntry) => {
             return indexEntry["title"].toLowerCase().includes(searchTerm.toLowerCase())
@@ -55,6 +57,11 @@ class HydeSearch {
     displayResults(searchResults) {
         console.log("HS/Debug: Found " + searchResults.length + " search results.");
         this.setSearchStatusMessage("Found " + searchResults.length + " results.");
+        // Add each result to the list
+        searchResults.forEach((result) => {
+            const resultItem = this.createResultItem(result);
+            this.searchResultsList.appendChild(resultItem);
+        });
     }
     displayNoResults() {
         console.log("HS/Debug: No results.");
@@ -77,5 +84,14 @@ class HydeSearch {
         }
         const searchStatusMessage = this.searchResultsContainer.querySelector("p#search-status");
         searchStatusMessage.innerText = message;
+    }
+    createResultItem(result) {
+        const resultItem = document.createElement("dt");
+        resultItem.classList.add("hyde-search-result");
+        const resultLink = document.createElement("a");
+        resultLink.href = result["slug"] + ".html"; // Todo get link/preference from Hyde JSON
+        resultLink.innerText = result["title"];
+        resultItem.appendChild(resultLink);
+        return resultItem;
     }
 }
