@@ -133,11 +133,8 @@ class HydeSearch {
         const sanitizedContentString = contentString.replace(/<[^>]*>/g, "");
 
         // Highlight the search term
-        const contentStringWithHighlight = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
-
-        resultContent.innerHTML = contentStringWithHighlight;
+        resultContent.innerHTML = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
         resultItem.appendChild(resultContent);
-
 
         return resultItem;
     }
