@@ -119,6 +119,7 @@ class HydeSearch {
         searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
         resultItem.appendChild(searchTermCountSpan);
         const resultContent = document.createElement("dd");
+        resultContent.classList.add("hyde-search-context");
         // Experimental highlighting
         // Count the number of search term occurrences in the content
         // Get the position of the first occurrence of the search term

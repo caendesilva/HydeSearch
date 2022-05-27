@@ -145,6 +145,7 @@ class HydeSearch {
         resultItem.appendChild(searchTermCountSpan);
 
         const resultContent = document.createElement("dd") as HTMLParagraphElement;
+        resultContent.classList.add("hyde-search-context");
 
         // Experimental highlighting
 
