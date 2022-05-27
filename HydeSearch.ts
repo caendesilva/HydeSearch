@@ -75,6 +75,7 @@ class HydeSearch {
         this.hydeSearchContainer.appendChild(this.searchResultsContainer);
 
         this.searchResultsList = document.createElement("dl");
+        this.searchResultsList.id = "search-results-list";
         this.searchResultsContainer.appendChild(this.searchResultsList);
     }
 }
