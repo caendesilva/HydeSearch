@@ -112,6 +112,13 @@ class HydeSearch {
         resultLink.innerText = result["title"];
         resultItem.appendChild(resultLink);
 
+        // Add search term count to result item
+        const searchTermCount = (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+        const searchTermCountSpan = document.createElement("span");
+        searchTermCountSpan.classList.add("search-term-count");
+        searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
+        resultItem.appendChild(searchTermCountSpan);
+
         const resultContent = document.createElement("dd") as HTMLParagraphElement;
 
         // Experimental highlighting
