@@ -52,6 +52,11 @@ class HydeSearch {
         // Clear the list
         this.searchResultsList.innerHTML = "";
 
+        // Check if the search term is empty
+        if (searchTerm.length === 0) {
+            return this.displayEnterSearchQuery();
+        }
+
         // Find indexEntries where the search term is in the title or content
         const searchResults = this.searchIndex.filter((indexEntry) => {
             return indexEntry["title"].toLowerCase().includes(searchTerm.toLowerCase())
@@ -73,6 +78,11 @@ class HydeSearch {
             const resultItem = this.createResultItem(result);
             this.searchResultsList.appendChild(resultItem);
         });
+    }
+
+    protected displayEnterSearchQuery() {
+        this.setSearchStatusMessage("");
+        // this.setSearchStatusMessage("Please enter a search query.");
     }
 
     protected displayNoResults() {
