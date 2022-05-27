@@ -20,6 +20,7 @@ class HydeSearch {
         this.searchInput.addEventListener("input", () => {
             this.search();
         });
+        this.createSearchResultsContainer();
         console.log("HS/Debug: Initialized.");
     }
     loadIndex() {
@@ -55,5 +56,11 @@ class HydeSearch {
     }
     displayNoResults() {
         console.log("HS/Debug: No results.");
+    }
+    createSearchResultsContainer() {
+        const searchResultsContainer = document.createElement("div");
+        searchResultsContainer.id = "search-results";
+        searchResultsContainer.classList.add("hyde-search-results");
+        document.getElementById('hyde-search').appendChild(searchResultsContainer);
     }
 }
