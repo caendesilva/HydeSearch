@@ -103,12 +103,11 @@ class HydeSearch {
         // Count the number of search term occurrences in the content
         // Get the position of the first occurrence of the search term
         const searchTermPosition = result["content"].indexOf(this.searchInput.value);
-        const contentString = "..." + result["content"].substring(searchTermPosition - 12, searchTermPosition + this.searchInput.value.length + 24) + "...";
+        const contentString = "..." + result["content"].substring(searchTermPosition - 24, searchTermPosition + 32) + "...";
         // Sanitize the content string to remove HTML tags
         const sanitizedContentString = contentString.replace(/<[^>]*>/g, "");
         // Highlight the search term
-        const contentStringWithHighlight = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
-        resultContent.innerHTML = contentStringWithHighlight;
+        resultContent.innerHTML = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
         resultItem.appendChild(resultContent);
         return resultItem;
     }
