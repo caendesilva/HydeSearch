@@ -43,7 +43,8 @@ class HydeSearch {
 
         // Find indexEntries where the search term is in the title or content
         const searchResults = this.searchIndex.filter((indexEntry) => {
-            return indexEntry["title"].toLowerCase().includes(searchTerm.toLowerCase()) || indexEntry["content"].toLowerCase().includes(searchTerm.toLowerCase());
+            return indexEntry["title"].toLowerCase().includes(searchTerm.toLowerCase())
+                || indexEntry["content"].toLowerCase().includes(searchTerm.toLowerCase());
         });
 
         return searchResults.length > 0
