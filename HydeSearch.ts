@@ -17,6 +17,8 @@ class HydeSearch {
         this.searchInput.addEventListener("input", () => {
             this.search();
         });
+        
+        console.log("HS/Debug: Initialized.");
     }
 
     public async loadIndex(): Promise<void> {
