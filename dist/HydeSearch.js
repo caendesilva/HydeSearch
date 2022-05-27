@@ -92,16 +92,23 @@ class HydeSearch {
         resultLink.href = result["slug"] + ".html"; // Todo get link/preference from Hyde JSON
         resultLink.innerText = result["title"];
         resultItem.appendChild(resultLink);
+        // Add search term count to result item
+        const searchTermCount = (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+        const searchTermCountSpan = document.createElement("span");
+        searchTermCountSpan.classList.add("search-term-count");
+        searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
+        resultItem.appendChild(searchTermCountSpan);
         const resultContent = document.createElement("dd");
         // Experimental highlighting
         // Count the number of search term occurrences in the content
-        const searchTermCount = (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
         // Get the position of the first occurrence of the search term
         const searchTermPosition = result["content"].indexOf(this.searchInput.value);
-        const contentString = result["content"].substring(searchTermPosition - 20, searchTermPosition + this.searchInput.value.length + 24);
+        const contentString = "..." + result["content"].substring(searchTermPosition - 12, searchTermPosition + this.searchInput.value.length + 24) + "...";
+        // Sanitize the content string to remove HTML tags
+        const sanitizedContentString = contentString.replace(/<[^>]*>/g, "");
         // Highlight the search term
-        const contentStringWithHighlight = contentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
-        resultContent.innerHTML = "Found " + searchTermCount + " occurrences." + contentStringWithHighlight;
+        const contentStringWithHighlight = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
+        resultContent.innerHTML = contentStringWithHighlight;
         resultItem.appendChild(resultContent);
         return resultItem;
     }
