@@ -62,10 +62,14 @@ class HydeSearch {
 
     protected displayResults(searchResults: any[]) {
         console.log("HS/Debug: Found "+ searchResults.length +" search results.");
+
+        this.setSearchStatusMessage("Found " + searchResults.length + " results.");
     }
 
     protected displayNoResults() {
         console.log("HS/Debug: No results.");
+
+        this.setSearchStatusMessage("No results found.");
     }
 
     protected createSearchResultsContainer() {
@@ -77,5 +81,16 @@ class HydeSearch {
         this.searchResultsList = document.createElement("dl");
         this.searchResultsList.id = "search-results-list";
         this.searchResultsContainer.appendChild(this.searchResultsList);
+    }
+
+    protected setSearchStatusMessage(message: string) {
+        if (!this.searchResultsContainer.querySelector("p#search-status")) {
+            const searchStatusMessage = document.createElement("p");
+            searchStatusMessage.id = "search-status";
+            this.searchResultsContainer.prepend(searchStatusMessage);
+        }
+
+        const searchStatusMessage = this.searchResultsContainer.querySelector("p#search-status") as HTMLParagraphElement;
+        searchStatusMessage.innerText = message;
     }
 }
