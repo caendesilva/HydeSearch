@@ -112,6 +112,24 @@ class HydeSearch {
         resultLink.innerText = result["title"];
         resultItem.appendChild(resultLink);
 
+        const resultContent = document.createElement("dd") as HTMLParagraphElement;
+
+        // Experimental highlighting
+
+        // Count the number of search term occurrences in the content
+        const searchTermCount = (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+
+        // Get the position of the first occurrence of the search term
+        const searchTermPosition = result["content"].indexOf(this.searchInput.value);
+        const contentString = result["content"].substring(searchTermPosition - 20, searchTermPosition + this.searchInput.value.length + 24);
+
+        // Highlight the search term
+        const contentStringWithHighlight = contentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
+
+        resultContent.innerHTML = "Found " + searchTermCount + " occurrences." + contentStringWithHighlight;
+        resultItem.appendChild(resultContent);
+
+
         return resultItem;
     }
 }
