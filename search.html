@@ -43,13 +43,10 @@
 
     <script>
         window.addEventListener('load', function() {
-            console.log('Debug: Initializing HydeSearch');
             const searchIndexLocation = 'tests/search.json';
             const Search = new HydeSearch(searchIndexLocation);
-            console.log(Search);
 
             Search.init();
-            console.log('Debug: HydeSearch initialized');
         });
     </script>
 </body>
