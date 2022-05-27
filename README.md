@@ -32,3 +32,7 @@ Then, load and initialize the plugin:
 	});
 </script>
 ```
+
+## License
+
+The MIT License
