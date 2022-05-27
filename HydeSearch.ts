@@ -46,12 +46,9 @@ class HydeSearch {
             return indexEntry["title"].toLowerCase().includes(searchTerm.toLowerCase()) || indexEntry["content"].toLowerCase().includes(searchTerm.toLowerCase());
         });
 
-        if (searchResults.length > 0) {
-            this.displayResults(searchResults);
-        }
-        else {
-            this.displayNoResults();
-        }
+        return searchResults.length > 0
+            ? this.displayResults(searchResults)
+            : this.displayNoResults();
     }
 
     protected displayResults(searchResults: any[]) {
