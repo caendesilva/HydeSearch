@@ -6,6 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HydeSearch</title>
     <style>
+        /* Demo Page Styles */
+        body {
+            background-color: #f2f2f2;
+            font-family: 'Raleway', serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            padding: 4px 16px;
+        }
+        input {
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 8px;
+        }
+    </style>
+    <style>
+        /* Sample Styles */
         .hyde-search-context {
             margin-bottom: 8px;
             white-space: pre-line;
@@ -32,8 +49,14 @@
         <noscript>
             The search feature requires JavaScript to be enabled in your browser.
         </noscript>
-        <input type="search" name="search" id="search-input" placeholder="Search..." autocomplete="off">
+        <input type="search" name="search" id="search-input" placeholder="Search..." autocomplete="off" autofocus>
     </div>
+
+    <footer>
+        <a href="https://validator.w3.org/nu/#textarea" style="position: absolute; right: 16px; bottom: 16px; opacity: 0.75;">
+            <img src="https://cdn.jsdelivr.net/gh/bradleytaunt/html5-valid-badge@68b012b5c19b26f75d9bee2409420c916b2d451a/html5-validator-badge-blue.svg" alt="Valid HTML5">
+        </a>
+    </footer>
 
     <script src="dist/HydeSearch.js" defer></script>
 
