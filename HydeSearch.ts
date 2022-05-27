@@ -154,7 +154,7 @@ class HydeSearch {
         const searchTermPosition = result["content"].indexOf(this.searchInput.value);
         const contentString = "..." + result["content"].substring(searchTermPosition - 32, searchTermPosition + 48) + "...";
 
-        // Sanitize the content string to remove HTML tags
+        // Sanitize the content string to remove HTML tags (Not indented to be secure as it assumes the JSON is trusted, but instead tries to remove embeds and images.)
         const sanitizedContentString = contentString.replace(/<[^>]*>/g, "");
 
         // Highlight the search term
