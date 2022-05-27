@@ -3,6 +3,10 @@ class HydeSearch {
     searchIndex: Array<any>;
 
     searchInput = document.getElementById("search-input") as HTMLInputElement;
+    hydeSearchContainer = document.getElementById('hyde-search') as HTMLDivElement;
+
+    protected searchResultsList: HTMLDListElement;
+    protected searchResultsContainer: HTMLDivElement;
 
     constructor(searchIndexLocation: string) {
         this.searchIndexLocation = searchIndexLocation;
@@ -65,12 +69,12 @@ class HydeSearch {
     }
 
     protected createSearchResultsContainer() {
-        const searchResultsContainer = document.createElement("div");
-        searchResultsContainer.id = "search-results";
-        searchResultsContainer.classList.add("hyde-search-results");
-        document.getElementById('hyde-search').appendChild(searchResultsContainer);
+        this.searchResultsContainer = document.createElement("div");
+        this.searchResultsContainer.id = "search-results";
+        this.searchResultsContainer.classList.add("hyde-search-results");
+        this.hydeSearchContainer.appendChild(this.searchResultsContainer);
 
-        const searchResultsList = document.createElement("dl");
-        searchResultsContainer.appendChild(searchResultsList);
+        this.searchResultsList = document.createElement("dl");
+        this.searchResultsContainer.appendChild(this.searchResultsList);
     }
 }

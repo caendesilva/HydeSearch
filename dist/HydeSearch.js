@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 class HydeSearch {
     constructor(searchIndexLocation) {
         this.searchInput = document.getElementById("search-input");
+        this.hydeSearchContainer = document.getElementById('hyde-search');
         this.searchIndexLocation = searchIndexLocation;
     }
     init() {
@@ -58,11 +59,11 @@ class HydeSearch {
         console.log("HS/Debug: No results.");
     }
     createSearchResultsContainer() {
-        const searchResultsContainer = document.createElement("div");
-        searchResultsContainer.id = "search-results";
-        searchResultsContainer.classList.add("hyde-search-results");
-        document.getElementById('hyde-search').appendChild(searchResultsContainer);
-        const searchResultsList = document.createElement("dl");
-        searchResultsContainer.appendChild(searchResultsList);
+        this.searchResultsContainer = document.createElement("div");
+        this.searchResultsContainer.id = "search-results";
+        this.searchResultsContainer.classList.add("hyde-search-results");
+        this.hydeSearchContainer.appendChild(this.searchResultsContainer);
+        this.searchResultsList = document.createElement("dl");
+        this.searchResultsContainer.appendChild(this.searchResultsList);
     }
 }
