@@ -56,7 +56,7 @@ class HydeSearch {
     }
     displayResults(searchResults) {
         console.log("HS/Debug: Found " + searchResults.length + " search results.");
-        this.setSearchStatusMessage("Found " + searchResults.length + " results.");
+        this.setSearchStatusMessage("Found " + searchResults.length + " result" + (searchResults.length > 1 ? "s" : "") + ".");
         // Add each result to the list
         searchResults.forEach((result) => {
             const resultItem = this.createResultItem(result);
