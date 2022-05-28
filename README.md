@@ -43,8 +43,8 @@ PRs, issues, and feedback are welcome! I'd especially love to get help writing t
 While this tool was created to be used with HydePHP, and thus is rather opinionated,
 I imagine it can easily be used with any other static site generator. 
 
-If developing a third party integration, make sure that the generated JSON follows
-the expected schema.
+If developing a third party integration, make sure that the generated JSON follows the expected
+[searchindex schema](https://cdn.desilva.se/storage/permanent/2022/schemas/hydesearch/schema-draft.json).
 
 ## License
 
