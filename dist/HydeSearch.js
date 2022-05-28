@@ -85,6 +85,8 @@ class HydeSearch {
         });
         // Add each result to the list
         searchResults.forEach((result) => {
+            const resultItem = new ResultItem(result["title"], result["content"], result["destination"], result["slug"], this.searchInput.value);
+            console.log(resultItem);
             this.searchResultsList.appendChild(this.createResultItemTitle(result));
             this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
@@ -157,10 +159,17 @@ class HydeSearch {
     }
 }
 class ResultItem {
-    constructor(title, content, destination, slug) {
+    constructor(title, content, destination, slug, currentSearchTerm = null) {
         this.title = title;
         this.content = content;
         this.destination = destination;
         this.slug = slug;
+        this.currentSearchTerm = currentSearchTerm;
+        this.searchTermCount = this.getSearchTermCount();
+    }
+    getSearchTermCount() {
+        return this.currentSearchTerm
+            ? this.searchTermCount = (this.content.match(new RegExp(this.currentSearchTerm, "gi")) || []).length
+            : 0;
     }
 }
