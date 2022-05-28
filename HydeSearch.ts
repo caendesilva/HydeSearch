@@ -241,7 +241,9 @@ class ResultItem {
                 "/": '&#x2F;',
             };
             const reg = /[&<>"'/]/ig;
-            return sentence.replace(reg, (match)=>(map[match])).replace(/<[^>]*>/g, "").trim();
+            const escaped = sentence.replace(reg, (match) => (map[match]));
+            const sanitized = escaped.replace(/<\/?[^>]+(>|$)/g, "");
+            return sanitized.trim();
         }
 
         const sanitizedContentString = getSanitizedContentString();
