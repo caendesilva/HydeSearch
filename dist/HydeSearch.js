@@ -72,7 +72,11 @@ class HydeSearch {
     }
     displayResults(searchResults) {
         this.debug("Found " + searchResults.length + " search results.");
-        this.setSearchStatusMessage("Found " + searchResults.length + " result" + (searchResults.length > 1 ? "s" : "") + ".");
+        // Get the number of matches in all search results
+        const searchTermCount = searchResults.reduce((acc, result) => {
+            return acc + (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
+        }, 0);
+        this.setSearchStatusMessage("Found " + searchTermCount + " result" + (searchResults.length > 1 ? "s" : "") + " in " + searchResults.length + " pages.");
         // Sort results by number of matches
         searchResults.sort((a, b) => {
             return (b["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length
