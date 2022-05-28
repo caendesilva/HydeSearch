@@ -113,7 +113,9 @@ class HydeSearch {
 
             console.log(resultItem);
 
-            this.searchResultsList.appendChild(this.createResultItemTitle(result));
+            this.searchResultsList.appendChild(resultItem.createResultItemTitle());
+            console.log(resultItem.createResultItemTitle());
+
             this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
 
@@ -228,7 +230,6 @@ class ResultItem {
         this.destination = destination;
         this.slug = slug;
         this.currentSearchTerm = currentSearchTerm;
-
         this.searchTermCount = this.getSearchTermCount();
     }
 
@@ -236,5 +237,25 @@ class ResultItem {
         return this.currentSearchTerm
             ? this.searchTermCount = (this.content.match(new RegExp(this.currentSearchTerm, "gi")) || []).length
             : 0;
+    }
+
+    public createResultItemTitle(): HTMLLIElement {
+        const resultItem = document.createElement("dt") as HTMLLIElement;
+        resultItem.classList.add("hyde-search-result");
+        resultItem.id = "search-result-" + this.slug;
+
+        const resultLink = document.createElement("a") as HTMLAnchorElement;
+        resultLink.href = this.destination;
+        resultLink.innerText = this.title;
+        resultItem.appendChild(resultLink);
+
+        // Add search term count to result item
+        resultItem.setAttribute('data-matches', this.searchTermCount.toString());
+        const searchTermCountSpan = document.createElement("span");
+        searchTermCountSpan.classList.add("search-term-count");
+        searchTermCountSpan.innerText = ", " + this.searchTermCount + " occurrence" + (this.searchTermCount > 1 ? "s" : "") + " found.";
+        resultItem.appendChild(searchTermCountSpan);
+
+        return resultItem;       
     }
 }
