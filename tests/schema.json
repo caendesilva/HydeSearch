@@ -3,10 +3,10 @@
   "$id": "https://cdn.desilva.se/storage/permanent/2022/schemas/hydesearch/schema-draft.json",
   "type": "array",
   "default": [],
-  "title": "Root Schema",
+  "title": "HydeSearchIndex Schema",
   "items": {
     "type": "object",
-    "title": "A Schema",
+    "title": "Page Object",
     "required": [
       "slug",
       "title",
@@ -16,28 +16,28 @@
     "properties": {
       "slug": {
         "type": "string",
-        "title": "The slug Schema",
+        "title": "The page slug",
         "examples": [
           "down-the-rabbithole"
         ]
       },
       "title": {
         "type": "string",
-        "title": "The title Schema",
+        "title": "The page title",
         "examples": [
           "Down the Rabbit-Hole"
         ]
       },
       "content": {
         "type": "string",
-        "title": "The content Schema",
+        "title": "The searchable contents",
         "examples": [
           "CHAPTER I\n\n Down the Rabbit-Hole\n\n Alice was beginning to get very tired [...]"
         ]
       },
       "destination": {
         "type": "string",
-        "title": "The destination Schema",
+        "title": "The location of the page",
         "examples": [
           "down-the-rabbithole.html"
         ]
