@@ -134,6 +134,28 @@
                 occurrence of the search term in the page content, extracts the
                 whole sentence, and highlights the matching word.
             </p>
+            <h4>
+                About the dataset
+            </h4>
+            <p>
+                Since I love working with real data, I'm using the entire
+                Alice's Adventures in Wonderland book as it's in the public domain.
+            </p>
+            <p>
+                Each chapter has been split into a Markdown page file.
+                The files were then placed in the _docs folder of a Hyde installation to be processed by HydePHP.
+            </p>
+            <ul>
+                <li>It took an average of 1,265.51ms to generate the search index JSON.</li>
+                <li>Each entry in the index contains the entire chapter in plain text.</li>
+                <li>The file weights 148kB. When testing in production, only 55.2 kB is sent over the air.</li>
+                <li>However, since the file is automatically cached by the browser, the load time is only ~2ms on my device.</li>
+                <li>Since the index is loaded asynchronously, and only once per page, that's good with me.</li>
+            </ul>
+            <p>
+                To conserve space and improve performance on sites with many pages,
+                alternative strategies could be used instead of loading the whole page.
+            </p>
         </article>
     </aside>
 
