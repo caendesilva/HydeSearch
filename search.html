@@ -16,6 +16,8 @@
             padding: 4px 16px;
             /* Ensure space under the input to prevent page jumping on mobile */
             min-height: 150vh;
+            display: flex;
+            flex-direction: column;
         }
         header {
             margin-top: 20px;
@@ -34,6 +36,28 @@
             padding: 16px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        @media screen and (min-width: 800px) {
+            body {
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+            main, aside {
+                width: 50%;
+                padding-left: 16px;
+                padding-right: 16px;
+                height: fit-content;
+            }
+            main {
+                max-width: 600px;
+                margin-top: 16px;
+            }
+            header {
+                margin-top: 0;
+            }
+            aside {
+                max-width: 65ch;
+            }
         }
         input {
             font-size: 16px;
@@ -64,18 +88,18 @@
     </noscript>
 </head>
 <body>
-    <header>
-        <strong role="doc-subtitle" style="font-size: 1.2em;">#CodingInPublic</strong>
-        <h1>Experimental Frontend Search Engine for Hyde Documentation Sites</h1>
-        <p role="doc-subtitle" style="margin-top: 0; margin-bottom: 0;">
-            <strong>Fully client-side search using a precompiled JSON search index.</strong>
-        </p>
-        <p role="doc-introduction" style="margin-top: 4px;">
-            Written in object-oriented TypeScript. Compiled to plain JavaScript. Zero dependencies.
-        </p>
-    </header>
-
     <main>
+        <header>
+            <strong role="doc-subtitle" style="font-size: 1.2em;">#CodingInPublic</strong>
+            <h1>Experimental Frontend Search Engine for Hyde Documentation Sites</h1>
+            <p role="doc-subtitle" style="margin-top: 0; margin-bottom: 0;">
+                <strong>Fully client-side search using a precompiled JSON search index.</strong>
+            </p>
+            <p role="doc-introduction" style="margin-top: 4px;">
+                Written in object-oriented TypeScript. Compiled to plain JavaScript. Zero dependencies.
+            </p>
+        </header>
+
         <div id="hyde-search">
             <noscript>
                 The search feature requires JavaScript to be enabled in your browser.
@@ -83,7 +107,37 @@
             <input type="search" name="search" id="search-input" placeholder="Search..." autocomplete="off" autofocus>
         </div>
     </main>
-    
+
+    <aside>
+        <article>
+            <h2>How does it work?</h2>
+            <p>
+                This search engine is designed to be an addon to HydePHP documentation sites.
+            </p>
+            <p>
+                It works by using a precompiled JSON search index that contains the searchable content
+                for all the pages, as well as a link to them. The current version assumes that the
+                searchable content is the entire page content, but it could just as well be a string
+                of keywords, excerpts, or something else.
+            </p>
+            <p>
+                Here's a walk-through of the process:
+            </p>
+            <ol>
+                <li>During the Hyde build process, a JSON search index is generated.</li>
+                <li>This search index is loaded by the HydeSearch script using AJAX.</li>
+                <li>When typing in the search field, the results are filtered in realtime,
+                    and then sorted by the number of matches.</li>
+            </ol>
+
+            <p>
+                For the context section for each result, HydeSearch finds the first
+                occurrence of the search term in the page content, extracts the
+                whole sentence, and highlights the matching word.
+            </p>
+        </article>
+    </aside>
+
     <script src="dist/HydeSearch.js" defer></script>
 
     <script>
