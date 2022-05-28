@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "http://example.com/example.json",
+  "$id": "https://cdn.desilva.se/storage/permanent/2022/schemas/hydesearch/schema-draft.json",
   "type": "array",
   "default": [],
   "title": "Root Schema",
