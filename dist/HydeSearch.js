@@ -115,7 +115,7 @@ class HydeSearch {
         resultItem.classList.add("hyde-search-result");
         resultItem.id = "search-result-" + result["slug"];
         const resultLink = document.createElement("a");
-        resultLink.href = result["slug"] + ".html"; // Todo get link/preference from Hyde JSON
+        resultLink.href = result["destination"];
         resultLink.innerText = result["title"];
         resultItem.appendChild(resultLink);
         // Add search term count to result item

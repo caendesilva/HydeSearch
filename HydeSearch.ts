@@ -141,7 +141,7 @@ class HydeSearch {
         resultItem.id = "search-result-" + result["slug"];
 
         const resultLink = document.createElement("a") as HTMLAnchorElement;
-        resultLink.href = result["slug"] + ".html"; // Todo get link/preference from Hyde JSON
+        resultLink.href = result["destination"];
         resultLink.innerText = result["title"];
         resultItem.appendChild(resultLink);
 
