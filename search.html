@@ -110,26 +110,25 @@
 
     <aside>
         <article>
-            <h2>How does it work?</h2>
-            <p>
-                This search engine is designed to be an addon to HydePHP documentation sites.
-            </p>
+            <h3>How does it work?</h3>
+            <h4>
+                This search engine is designed to be an addon to HydePHP documentation sites.  
+            </h4>
             <p>
                 It works by using a precompiled JSON search index that contains the searchable content
                 for all the pages, as well as a link to them. The current version assumes that the
                 searchable content is the entire page content, but it could just as well be a string
                 of keywords, excerpts, or something else.
             </p>
-            <p>
-                Here's a walk-through of the process:
-            </p>
+            <h4>
+                Here's a walk-through of the process:  
+            </h4>
             <ol>
                 <li>During the Hyde build process, a JSON search index is generated.</li>
                 <li>This search index is loaded by the HydeSearch script using AJAX.</li>
                 <li>When typing in the search field, the results are filtered in realtime,
                     and then sorted by the number of matches.</li>
             </ol>
-
             <p>
                 For the context section for each result, HydeSearch finds the first
                 occurrence of the search term in the page content, extracts the
