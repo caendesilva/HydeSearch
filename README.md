@@ -25,6 +25,7 @@ Then, load and initialize the plugin:
 <script>
 	window.addEventListener('load', function() {
 		// Replace with the HTTP location of your JSON search index.
+		// Note that HydeSearch assumes the JSON is safe and trusted. Use strict CORS policies.
 		const searchIndexLocation = 'tests/search.json';
 		const Search = new HydeSearch(searchIndexLocation);
 
