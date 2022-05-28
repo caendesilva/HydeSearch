@@ -90,6 +90,8 @@ class HydeSearch {
         });
         const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
         console.log(`Execution time:  ${timeString}`);
+        const searchStatusMessage = this.searchResultsContainer.querySelector("p#search-status");
+        searchStatusMessage.innerHTML = searchStatusMessage.innerText + ` <small>~${timeString}</small>`;
     }
     displayEnterSearchQuery() {
         this.setSearchStatusMessage("");
