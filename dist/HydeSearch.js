@@ -86,11 +86,8 @@ class HydeSearch {
         // Add each result to the list
         searchResults.forEach((result) => {
             const resultItem = new ResultItem(result["title"], result["content"], result["destination"], result["slug"], this.searchInput.value);
-            console.log(resultItem);
             this.searchResultsList.appendChild(resultItem.createResultItemTitle());
             this.searchResultsList.appendChild(resultItem.createResultItemContext());
-            console.log(resultItem.createResultItemTitle());
-            console.log(resultItem.createResultItemContext());
         });
         const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
         this.debug(`Execution time:  ${timeString}`);

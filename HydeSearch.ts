@@ -111,13 +111,8 @@ class HydeSearch {
                 this.searchInput.value
             );
 
-            console.log(resultItem);
-
             this.searchResultsList.appendChild(resultItem.createResultItemTitle());
             this.searchResultsList.appendChild(resultItem.createResultItemContext());
-
-            console.log(resultItem.createResultItemTitle());
-            console.log(resultItem.createResultItemContext());
         });
 
         const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
