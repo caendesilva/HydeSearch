@@ -15,6 +15,16 @@
             color: #333;
             padding: 4px 16px;
         }
+        header {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 1.6em;
+            margin-top: 4px;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
         input {
             font-size: 16px;
             line-height: 1.5;
@@ -39,13 +49,16 @@
 </head>
 <body>
     <header>
-        <h2>#CodingInPublic</h2>
-        <h1 style="font-size: 1.6em;">Experimental Frontend Search Engine for Hyde Documentation Sites</h1>
-        <p>
-            Fully client-side search using a precompiled JSON search index.
+        <strong role="doc-subtitle" style="font-size: 1.2em;">#CodingInPublic</strong>
+        <h1>Experimental Frontend Search Engine for Hyde Documentation Sites</h1>
+        <p role="doc-subtitle" style="margin-top: 0; margin-bottom: 0;">
+            <strong>Fully client-side search using a precompiled JSON search index.</strong>
+        </p>
+        <p role="doc-introduction" style="margin-top: 4px;">
+            Written in object-oriented TypeScript. Compiled to plain JavaScript. Zero dependencies.
         </p>
     </header>
-    
+
     <main>
         <div id="hyde-search">
             <noscript>
