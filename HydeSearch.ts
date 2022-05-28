@@ -231,7 +231,20 @@ class ResultItem {
         const sentence = this.content.substring(sentenceStartPosition + 1, sentenceEndPosition + 1);
 
         // Sanitize the content string to remove HTML tags (Not indented to be secure as it assumes the JSON is trusted, but instead tries to remove embeds and images.)
-        const sanitizedContentString = sentence.replace(/<[^>]*>/g, "").trim();
+        function getSanitizedContentString() {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#x27;',
+                "/": '&#x2F;',
+            };
+            const reg = /[&<>"'/]/ig;
+            return sentence.replace(reg, (match)=>(map[match])).replace(/<[^>]*>/g, "").trim();
+        }
+
+        const sanitizedContentString = getSanitizedContentString();
 
         // Highlight the search term
         resultContext.innerHTML = sanitizedContentString.replace(new RegExp(this.currentSearchTerm, "gi"), `<mark class="search-highlight">${this.currentSearchTerm}</mark>`);
