@@ -40,3 +40,9 @@ PRs, issues, and feedback are welcome! I'd especially love to get help writing t
 ## License
 
 The MIT License
+
+## Extra
+
+<a href="https://validator.w3.org/nu/#textarea">
+<img src="https://cdn.jsdelivr.net/gh/bradleytaunt/html5-valid-badge@68b012b5c19b26f75d9bee2409420c916b2d451a/html5-validator-badge-blue.svg" alt="Valid HTML5">
+</a>
