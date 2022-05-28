@@ -38,6 +38,14 @@ Then, load and initialize the plugin:
 
 PRs, issues, and feedback are welcome! I'd especially love to get help writing tests!
 
+## Development
+
+While this tool was created to be used with HydePHP, and thus is rather opinionated,
+I imagine it can easily be used with any other static site generator. 
+
+If developing a third party integration, make sure that the generated JSON follows
+the expected schema.
+
 ## License
 
 The MIT License

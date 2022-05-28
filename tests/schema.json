@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "default": [],
+  "title": "Root Schema",
+  "items": {
+    "type": "object",
+    "title": "A Schema",
+    "required": [
+      "slug",
+      "title",
+      "content",
+      "destination"
+    ],
+    "properties": {
+      "slug": {
+        "type": "string",
+        "title": "The slug Schema"
+      },
+      "title": {
+        "type": "string",
+        "title": "The title Schema"
+      },
+      "content": {
+        "type": "string",
+        "title": "The content Schema"
+      },
+      "destination": {
+        "type": "string",
+        "title": "The destination Schema"
+      }
+    }
+  }
+}
