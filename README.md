@@ -44,6 +44,6 @@ The MIT License
 
 ## Extra
 
-<a href="https://validator.w3.org/nu/#textarea">
+<a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fdemos.desilva.se%2Fgist%2Fgithub%2Fhydephp%2Fexperiments%2Fhydesearch">
 <img src="https://cdn.jsdelivr.net/gh/bradleytaunt/html5-valid-badge@68b012b5c19b26f75d9bee2409420c916b2d451a/html5-validator-badge-blue.svg" alt="Valid HTML5">
 </a>
