@@ -115,6 +115,7 @@ class HydeSearch {
 
             this.searchResultsList.appendChild(resultItem.createResultItemTitle());
             console.log(resultItem.createResultItemTitle());
+            console.log(resultItem.createResultItemContext());
 
             this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
@@ -257,5 +258,34 @@ class ResultItem {
         resultItem.appendChild(searchTermCountSpan);
 
         return resultItem;       
+    }
+
+    public createResultItemContext(): HTMLParagraphElement {
+
+        const resultContext = document.createElement("dd") as HTMLParagraphElement;
+        resultContext.classList.add("hyde-search-context");
+        resultContext.setAttribute('data-for', "search-result-" + this.slug);
+
+        // Experimental highlighting
+
+        // Count the number of search term occurrences in the content
+
+        // Get the position of the first occurrence of the search term
+        const searchTermPosition = this.content.indexOf(this.currentSearchTerm);
+
+        // Get the position of where the sentence containing the search term starts
+        const sentenceStartPosition = this.content.lastIndexOf(".", searchTermPosition);
+        const sentenceEndPosition = this.content.indexOf(".", searchTermPosition);
+
+        // Get the sentence containing the search term
+        const sentence = this.content.substring(sentenceStartPosition + 1, sentenceEndPosition + 1);
+
+        // Sanitize the content string to remove HTML tags (Not indented to be secure as it assumes the JSON is trusted, but instead tries to remove embeds and images.)
+        const sanitizedContentString = sentence.replace(/<[^>]*>/g, "").trim();
+
+        // Highlight the search term
+        resultContext.innerHTML = sanitizedContentString.replace(new RegExp(this.currentSearchTerm, "gi"), `<mark class="search-highlight">${this.currentSearchTerm}</mark>`);
+
+        return resultContext;
     }
 }
