@@ -156,3 +156,11 @@ class HydeSearch {
         return resultContent;
     }
 }
+class ResultItem {
+    constructor(title, content, destination, slug) {
+        this.title = title;
+        this.content = content;
+        this.destination = destination;
+        this.slug = slug;
+    }
+}

@@ -198,3 +198,17 @@ class HydeSearch {
         return resultContent;
     }
 }
+
+class ResultItem {
+    public title: string;
+    public content: string;
+    public destination: string;
+    public slug: string;
+
+    constructor(title: string, content: string, destination: string, slug: string) {
+        this.title = title;
+        this.content = content;
+        this.destination = destination;
+        this.slug = slug;
+    }
+}
