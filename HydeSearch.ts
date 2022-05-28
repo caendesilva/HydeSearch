@@ -114,10 +114,10 @@ class HydeSearch {
             console.log(resultItem);
 
             this.searchResultsList.appendChild(resultItem.createResultItemTitle());
+            this.searchResultsList.appendChild(resultItem.createResultItemContext());
+
             console.log(resultItem.createResultItemTitle());
             console.log(resultItem.createResultItemContext());
-
-            this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
 
         const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
@@ -158,57 +158,6 @@ class HydeSearch {
 
         const searchStatusMessage = this.searchResultsContainer.querySelector("p#search-status") as HTMLParagraphElement;
         searchStatusMessage.innerText = message;
-    }
-
-    protected createResultItemTitle(result: object): HTMLLIElement {
-        const resultItem = document.createElement("dt") as HTMLLIElement;
-        resultItem.classList.add("hyde-search-result");
-        resultItem.id = "search-result-" + result["slug"];
-
-        const resultLink = document.createElement("a") as HTMLAnchorElement;
-        resultLink.href = result["destination"];
-        resultLink.innerText = result["title"];
-        resultItem.appendChild(resultLink);
-
-        // Add search term count to result item
-        const searchTermCount = (result["content"].match(new RegExp(this.searchInput.value, "gi")) || []).length;
-        resultItem.setAttribute('data-matches', searchTermCount.toString());
-        const searchTermCountSpan = document.createElement("span");
-        searchTermCountSpan.classList.add("search-term-count");
-        searchTermCountSpan.innerText = ", " + searchTermCount + " occurrence" + (searchTermCount > 1 ? "s" : "") + " found.";
-        resultItem.appendChild(searchTermCountSpan);
-
-        return resultItem;
-    }
-
-
-    protected createResultItemContext(result: object): HTMLParagraphElement {
-
-        const resultContent = document.createElement("dd") as HTMLParagraphElement;
-        resultContent.classList.add("hyde-search-context");
-        resultContent.setAttribute('data-for', "search-result-" + result["slug"]);
-
-        // Experimental highlighting
-
-        // Count the number of search term occurrences in the content
-
-        // Get the position of the first occurrence of the search term
-        const searchTermPosition = result["content"].indexOf(this.searchInput.value);
-
-        // Get the position of where the sentence containing the search term starts
-        const sentenceStartPosition = result["content"].lastIndexOf(".", searchTermPosition);
-        const sentenceEndPosition = result["content"].indexOf(".", searchTermPosition);
-
-        // Get the sentence containing the search term
-        const sentence = result["content"].substring(sentenceStartPosition + 1, sentenceEndPosition + 1);
-
-        // Sanitize the content string to remove HTML tags (Not indented to be secure as it assumes the JSON is trusted, but instead tries to remove embeds and images.)
-        const sanitizedContentString = sentence.replace(/<[^>]*>/g, "").trim();
-
-        // Highlight the search term
-        resultContent.innerHTML = sanitizedContentString.replace(new RegExp(this.searchInput.value, "gi"), `<mark class="search-highlight">${this.searchInput.value}</mark>`);
-
-        return resultContent;
     }
 }
 
