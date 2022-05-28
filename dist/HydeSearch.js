@@ -86,8 +86,8 @@ class HydeSearch {
         // Add each result to the list
         searchResults.forEach((result) => {
             const resultItem = new ResultItem(result["title"], result["content"], result["destination"], result["slug"], this.searchInput.value);
-            this.searchResultsList.appendChild(resultItem.createResultItemTitle());
-            this.searchResultsList.appendChild(resultItem.createResultItemContext());
+            this.searchResultsList.appendChild(resultItem.createTitleElement());
+            this.searchResultsList.appendChild(resultItem.createContextElement());
         });
         const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
         this.debug(`Execution time:  ${timeString}`);
@@ -135,7 +135,7 @@ class ResultItem {
             ? this.searchTermCount = (this.content.match(new RegExp(this.currentSearchTerm, "gi")) || []).length
             : 0;
     }
-    createResultItemTitle() {
+    createTitleElement() {
         const resultItem = document.createElement("dt");
         resultItem.classList.add("hyde-search-result");
         resultItem.id = "search-result-" + this.slug;
@@ -151,7 +151,7 @@ class ResultItem {
         resultItem.appendChild(searchTermCountSpan);
         return resultItem;
     }
-    createResultItemContext() {
+    createContextElement() {
         const resultContext = document.createElement("dd");
         resultContext.classList.add("hyde-search-context");
         resultContext.setAttribute('data-for', "search-result-" + this.slug);

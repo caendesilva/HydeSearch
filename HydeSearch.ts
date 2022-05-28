@@ -111,8 +111,8 @@ class HydeSearch {
                 this.searchInput.value
             );
 
-            this.searchResultsList.appendChild(resultItem.createResultItemTitle());
-            this.searchResultsList.appendChild(resultItem.createResultItemContext());
+            this.searchResultsList.appendChild(resultItem.createTitleElement());
+            this.searchResultsList.appendChild(resultItem.createContextElement());
         });
 
         const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
@@ -184,7 +184,7 @@ class ResultItem {
             : 0;
     }
 
-    public createResultItemTitle(): HTMLLIElement {
+    public createTitleElement(): HTMLLIElement {
         const resultItem = document.createElement("dt") as HTMLLIElement;
         resultItem.classList.add("hyde-search-result");
         resultItem.id = "search-result-" + this.slug;
@@ -204,7 +204,7 @@ class ResultItem {
         return resultItem;       
     }
 
-    public createResultItemContext(): HTMLParagraphElement {
+    public createContextElement(): HTMLParagraphElement {
 
         const resultContext = document.createElement("dd") as HTMLParagraphElement;
         resultContext.classList.add("hyde-search-context");
