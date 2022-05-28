@@ -61,6 +61,7 @@ class HydeSearch {
     }
 
     public search() {
+        const startTime = window.performance.now();
         this.debug("Searching... Got input: " + this.searchInput.value);
         const searchTerm = this.searchInput.value;
 
@@ -79,11 +80,11 @@ class HydeSearch {
         });
 
         return searchResults.length > 0
-            ? this.displayResults(searchResults)
+            ? this.displayResults(searchResults, startTime)
             : this.displayNoResults();
     }
 
-    protected displayResults(searchResults: any[]) {
+    protected displayResults(searchResults: any[], startTime) {
         this.debug("Found "+ searchResults.length +" search results.");
 
         // Get the number of matches in all search results
@@ -105,6 +106,9 @@ class HydeSearch {
             this.searchResultsList.appendChild(this.createResultItemTitle(result));
             this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
+
+        const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
+        console.log(`Execution time:  ${timeString}`);
     }
 
     protected displayEnterSearchQuery() {

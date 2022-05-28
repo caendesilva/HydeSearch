@@ -53,6 +53,7 @@ class HydeSearch {
         });
     }
     search() {
+        const startTime = window.performance.now();
         this.debug("Searching... Got input: " + this.searchInput.value);
         const searchTerm = this.searchInput.value;
         // Clear the list
@@ -67,10 +68,10 @@ class HydeSearch {
                 || indexEntry["content"].toLowerCase().includes(searchTerm.toLowerCase());
         });
         return searchResults.length > 0
-            ? this.displayResults(searchResults)
+            ? this.displayResults(searchResults, startTime)
             : this.displayNoResults();
     }
-    displayResults(searchResults) {
+    displayResults(searchResults, startTime) {
         this.debug("Found " + searchResults.length + " search results.");
         // Get the number of matches in all search results
         const searchTermCount = searchResults.reduce((acc, result) => {
@@ -87,6 +88,8 @@ class HydeSearch {
             this.searchResultsList.appendChild(this.createResultItemTitle(result));
             this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
+        const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
+        console.log(`Execution time:  ${timeString}`);
     }
     displayEnterSearchQuery() {
         this.setSearchStatusMessage("");
