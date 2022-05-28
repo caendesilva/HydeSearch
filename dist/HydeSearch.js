@@ -89,7 +89,7 @@ class HydeSearch {
             this.searchResultsList.appendChild(this.createResultItemContext(result));
         });
         const timeString = `${Math.round((((window.performance.now() - startTime) + Number.EPSILON)) * 100) / 100}ms`;
-        console.log(`Execution time:  ${timeString}`);
+        this.debug(`Execution time:  ${timeString}`);
         const searchStatusMessage = this.searchResultsContainer.querySelector("p#search-status");
         searchStatusMessage.innerHTML = searchStatusMessage.innerText + ` <small>~${timeString}</small>`;
     }
