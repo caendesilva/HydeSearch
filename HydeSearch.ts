@@ -210,6 +210,12 @@ class ResultItem {
         resultContext.classList.add("hyde-search-context");
         resultContext.setAttribute('data-for', "search-result-" + this.slug);
 
+        this.highlight(resultContext);
+
+        return resultContext;
+    }
+
+    protected highlight(resultContext: HTMLParagraphElement) {
         // Experimental highlighting
 
         // Count the number of search term occurrences in the content
@@ -229,7 +235,5 @@ class ResultItem {
 
         // Highlight the search term
         resultContext.innerHTML = sanitizedContentString.replace(new RegExp(this.currentSearchTerm, "gi"), `<mark class="search-highlight">${this.currentSearchTerm}</mark>`);
-
-        return resultContext;
     }
 }

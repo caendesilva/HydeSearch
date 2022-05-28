@@ -155,6 +155,10 @@ class ResultItem {
         const resultContext = document.createElement("dd");
         resultContext.classList.add("hyde-search-context");
         resultContext.setAttribute('data-for', "search-result-" + this.slug);
+        this.highlight(resultContext);
+        return resultContext;
+    }
+    highlight(resultContext) {
         // Experimental highlighting
         // Count the number of search term occurrences in the content
         // Get the position of the first occurrence of the search term
@@ -168,6 +172,5 @@ class ResultItem {
         const sanitizedContentString = sentence.replace(/<[^>]*>/g, "").trim();
         // Highlight the search term
         resultContext.innerHTML = sanitizedContentString.replace(new RegExp(this.currentSearchTerm, "gi"), `<mark class="search-highlight">${this.currentSearchTerm}</mark>`);
-        return resultContext;
     }
 }
