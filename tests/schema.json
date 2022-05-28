@@ -16,19 +16,31 @@
     "properties": {
       "slug": {
         "type": "string",
-        "title": "The slug Schema"
+        "title": "The slug Schema",
+        "examples": [
+          "down-the-rabbithole"
+        ]
       },
       "title": {
         "type": "string",
-        "title": "The title Schema"
+        "title": "The title Schema",
+        "examples": [
+          "Down the Rabbit-Hole"
+        ]
       },
       "content": {
         "type": "string",
-        "title": "The content Schema"
+        "title": "The content Schema",
+        "examples": [
+          "CHAPTER I\n\n Down the Rabbit-Hole\n\n Alice was beginning to get very tired [...]"
+        ]
       },
       "destination": {
         "type": "string",
-        "title": "The destination Schema"
+        "title": "The destination Schema",
+        "examples": [
+          "down-the-rabbithole.html"
+        ]
       }
     }
   }
