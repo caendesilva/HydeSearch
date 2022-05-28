@@ -201,7 +201,7 @@ class ResultItem {
         searchTermCountSpan.innerText = ", " + this.searchTermCount + " occurrence" + (this.searchTermCount > 1 ? "s" : "") + " found.";
         resultItem.appendChild(searchTermCountSpan);
 
-        return resultItem;       
+        return resultItem;
     }
 
     public createContextElement(): HTMLParagraphElement {
@@ -240,10 +240,9 @@ class ResultItem {
                 "'": '&#x27;',
                 "/": '&#x2F;',
             };
-            const reg = /[&<>"'/]/ig;
-            const escaped = sentence.replace(reg, (match) => (map[match]));
-            const sanitized = escaped.replace(/<\/?[^>]+(>|$)/g, "");
-            return sanitized.trim();
+            return sentence.replace(/[&<>"'/]/ig,
+                (match) => (map[match]))
+                .replace(/<\/?[^>]+(>|$)/g, "").trim();
         }
 
         const sanitizedContentString = getSanitizedContentString();

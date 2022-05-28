@@ -178,10 +178,8 @@ class ResultItem {
                 "'": '&#x27;',
                 "/": '&#x2F;',
             };
-            const reg = /[&<>"'/]/ig;
-            const escaped = sentence.replace(reg, (match) => (map[match]));
-            const sanitized = escaped.replace(/<\/?[^>]+(>|$)/g, "");
-            return sanitized.trim();
+            return sentence.replace(/[&<>"'/]/ig, (match) => (map[match]))
+                .replace(/<\/?[^>]+(>|$)/g, "").trim();
         }
         const sanitizedContentString = getSanitizedContentString();
         // Highlight the search term
