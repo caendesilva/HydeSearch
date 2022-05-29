@@ -1,6 +1,6 @@
 {
   "name": "hydesearch",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Experimental Frontend Search Engine for Hyde Documentation Sites",
   "main": "HydeSearch.ts",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc && uglifyjs --compress --mangle --output dist/HydeSearch.min.js dist/HydeSearch.js"
   },
   "repository": {
     "type": "git",
