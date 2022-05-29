@@ -1,0 +1,29 @@
+{
+  "name": "hydesearch",
+  "version": "0.1.0",
+  "description": "Experimental Frontend Search Engine for Hyde Documentation Sites",
+  "main": "HydeSearch.ts",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hydephp/HydeSearch.git"
+  },
+  "keywords": [
+    "hydephp",
+    "frontend",
+    "search",
+    "static",
+    "sites"
+  ],
+  "author": "Caen De Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hydephp/HydeSearch/issues"
+  },
+  "homepage": "https://github.com/hydephp/HydeSearch#readme"
+}
