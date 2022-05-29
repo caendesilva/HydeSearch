@@ -1,5 +1,11 @@
 # Experimental Frontend Search Engine for Hyde Documentation Sites
 
+![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/hydephp/hydesearch)
+[![jsDelivr hits (NPM)](https://data.jsdelivr.com/v1/package/npm/hydesearch/badge?style=rounded)](https://www.jsdelivr.com/package/npm/hydesearch)
+![NPM Downloads](https://img.shields.io/npm/dm/hydesearch)
+[![Build](https://github.com/hydephp/hydesearch/actions/workflows/build.yml/badge.svg)](https://github.com/hydephp/hydesearch/actions/workflows/build.yml)
+[![CodeQL](https://github.com/hydephp/hydesearch/actions/workflows/codeql.yml/badge.svg)](https://github.com/hydephp/hydesearch/actions/workflows/codeql.yml)
+
 ## #CodingInPublic
 
 Contains both the frontend interface and the TypeScript source code for the plugin.
