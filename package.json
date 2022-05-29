@@ -2,7 +2,7 @@
   "name": "hydesearch",
   "version": "0.1.6",
   "description": "Experimental Frontend Search Engine for Hyde Documentation Sites",
-  "main": "HydeSearch.ts",
+  "main": "dist/HydeSearch.js",
   "directories": {
     "test": "tests"
   },
