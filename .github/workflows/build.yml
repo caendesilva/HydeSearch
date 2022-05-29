@@ -1,0 +1,30 @@
+name: Compile TypeScript
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        cache: 'npm'
+
+    - name: Install Node.js dependencies
+      run: npm ci
+
+    - name: Build assets for production
+      run: npm run build
+
+    - name: Push assets to GitHub
+      uses: EndBug/add-and-commit@v9 
+      with:
+        add: 'dist'
+        message: 'Compiled and minified TypeScript'
