@@ -1,6 +1,6 @@
 {
   "name": "hydesearch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Experimental Frontend Search Engine for Hyde Documentation Sites",
   "main": "HydeSearch.ts",
   "directories": {
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/hydephp/HydeSearch/issues"
   },
-  "homepage": "https://github.com/hydephp/HydeSearch#readme"
+  "homepage": "https://github.com/hydephp/HydeSearch#readme",
+  "devDependencies": {
+    "typescript": "^4.7.2"
+  }
 }
